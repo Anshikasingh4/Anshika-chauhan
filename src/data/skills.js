@@ -7,7 +7,7 @@ export const skills = [
   { name: 'Next.js', x: 12, y: 33 },
   { name: 'GSAP', x: 90, y: 33 },
   { name: 'Python', x: 13, y: 50 },
-  { name: 'UI/UX Design', x: 86, y: 50 },
+  { name: 'UI/UX Design', x: 92, y: 50 },
   { name: 'Springboot', x: 14, y: 67 },
   { name: 'Java', x: 90, y: 67 },
   { name: 'MongoDB', x: 27, y: 85 },
