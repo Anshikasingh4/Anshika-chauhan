@@ -6,9 +6,9 @@ import SafeImage from './SafeImage'
 
 // Responsive silhouettes and aspect ratios tailored for both mobile and desktop screens
 const shapes = [
-  'w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] rounded-[999px_999px_35px_35px/50px_50px_35px_35px] sm:rounded-[999px_999px_70px_70px/80px_80px_70px_70px] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)] md:rounded-[60px]',
-  'w-[clamp(88px,30vw,220px)] h-[clamp(88px,30vw,220px)] rounded-[48%_52%_50%_50%/55%_48%_52%_45%] md:w-[clamp(170px,19vw,270px)] md:h-[clamp(170px,19vw,270px)]',
-  'w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] rounded-[26px] sm:rounded-[45px] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)] md:rounded-[60px]',
+  'tile-shape-0 w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)]',
+  'tile-shape-1 w-[clamp(88px,30vw,220px)] h-[clamp(88px,30vw,220px)] md:w-[clamp(170px,19vw,270px)] md:h-[clamp(170px,19vw,270px)]',
+  'tile-shape-2 w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)]',
 ]
 
 export default function ImageTiles() {
@@ -40,12 +40,12 @@ export default function ImageTiles() {
     >
       {site.tiles.map((t, i) => (
         <div key={t.src} className="tile flex-shrink-0">
-          <div className={`group relative overflow-hidden transition-transform duration-700 ease-out hover:rotate-[1.5deg] ${shapes[i]}`}>
+          <div className={`tile-wrapper group relative overflow-hidden transition-transform duration-700 ease-out hover:rotate-[1.5deg] ${shapes[i]}`}>
             <div className="tile-img absolute -inset-y-[8%] inset-x-0">
               <SafeImage
                 src={t.src}
                 alt={t.alt}
-                className="h-full w-full object-cover "
+                className="h-full w-full object-cover"
               />
             </div>
           </div>
