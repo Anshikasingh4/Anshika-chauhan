@@ -123,47 +123,21 @@ button:hover .text-roll .text-roll-inner,
   }
 }
 
-/* Moodboard Image Tiles & WebKit/Blink Overflow-Hidden GPU Fix */
+/* Moodboard Image Tiles (Pill - Circle - Pill) & WebKit/Blink GPU Clipping Fix */
 .tile-wrapper {
   position: relative;
   overflow: hidden;
   isolation: isolate;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
+  border-radius: 9999px;
   mask-image: -webkit-radial-gradient(white, black);
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
-.tile-shape-0 {
-  border-radius: 9999px 9999px 30px 30px;
-}
-@media (min-width: 640px) {
-  .tile-shape-0 {
-    border-radius: 9999px 9999px 50px 50px;
-  }
-}
-@media (min-width: 768px) {
-  .tile-shape-0 {
-    border-radius: 9999px 9999px 60px 60px;
-  }
-}
-
-.tile-shape-1 {
-  border-radius: 50%;
-}
-
-.tile-shape-2 {
-  border-radius: 9999px;
-}
-@media (min-width: 768px) {
-  .tile-shape-2 {
-    border-radius: 60px;
-  }
-}
-
 .tile-img,
 .tile-img img {
-  border-radius: inherit;
+  border-radius: 9999px;
   overflow: hidden;
   mask-image: -webkit-radial-gradient(white, black);
   -webkit-mask-image: -webkit-radial-gradient(white, black);

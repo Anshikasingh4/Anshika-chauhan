@@ -4,11 +4,11 @@ import { site } from '../data/site'
 import useReducedMotion from '../hooks/useReducedMotion'
 import SafeImage from './SafeImage'
 
-// Responsive silhouettes and aspect ratios tailored for both mobile and desktop screens
+// Silhouettes: Left Pill, Center Circle, Right Pill (matching Image 2 design)
 const shapes = [
-  'tile-shape-0 w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)]',
-  'tile-shape-1 w-[clamp(88px,30vw,220px)] h-[clamp(88px,30vw,220px)] md:w-[clamp(170px,19vw,270px)] md:h-[clamp(170px,19vw,270px)]',
-  'tile-shape-2 w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)]',
+  'w-[clamp(80px,25vw,190px)] aspect-[1/1.6] md:w-[clamp(130px,14.5vw,210px)]',
+  'w-[clamp(90px,29vw,240px)] aspect-square md:w-[clamp(155px,17.5vw,260px)]',
+  'w-[clamp(80px,25vw,190px)] aspect-[1/1.6] md:w-[clamp(130px,14.5vw,210px)]',
 ]
 
 export default function ImageTiles() {
@@ -36,7 +36,7 @@ export default function ImageTiles() {
     <section
       ref={ref}
       aria-label="Moodboard"
-      className="flex w-full max-w-full items-center justify-center gap-2 px-2.5 py-12 sm:gap-4 sm:px-6 md:gap-10 md:py-28 overflow-hidden"
+      className="flex w-full max-w-full items-center justify-center gap-3 px-3 py-14 sm:gap-6 sm:px-6 md:gap-10 md:py-24 overflow-hidden"
     >
       {site.tiles.map((t, i) => (
         <div key={t.src} className="tile flex-shrink-0">
