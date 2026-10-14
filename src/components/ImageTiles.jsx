@@ -41,7 +41,7 @@ export default function ImageTiles() {
               <SafeImage
                 src={t.src}
                 alt={t.alt}
-                className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.07]"
+                className="h-full w-full object-cover "
               />
             </div>
           </div>
