@@ -11,8 +11,8 @@ import useReducedMotion from '../hooks/useReducedMotion'
 //
 // Progress climbs to 90 over MIN_SECONDS, then waits for real readiness (fonts + hero image).
 const HERO_SRC = '/images/hero.jpg'
-const MIN_SECONDS = 3
-const MAX_WAIT_MS = 6000 // never get stuck on a slow or failed asset
+const MIN_SECONDS = 1.6
+const MAX_WAIT_MS = 4000 // never get stuck on a slow or failed asset
 
 const WORDS = ['Sketching', 'Composing', 'Coding', 'Polishing', 'Ready']
 const PETAL = 'M0 0 C -26 -14 -30 -52 -9 -74 L 0 -66 L 9 -74 C 30 -52 26 -14 0 0 Z'
@@ -70,7 +70,7 @@ export default function Preloader({ onReveal, onComplete }) {
       wordIdx = idx
       wordRef.current.textContent = WORDS[idx]
       if (!reduced) {
-        gsap.fromTo(wordRef.current, { yPercent: 100 }, { yPercent: 0, duration: 0.5, ease: 'power3.out', overwrite: true })
+        gsap.fromTo(wordRef.current, { yPercent: 100 }, { yPercent: 0, duration: 0.35, ease: 'power3.out', overwrite: true })
       }
     }
 
@@ -110,7 +110,7 @@ export default function Preloader({ onReveal, onComplete }) {
         counter.value = 100
         draw()
         onReveal?.()
-        exit = gsap.to(root, { opacity: 0, duration: 0.4, onComplete: unlock })
+        exit = gsap.to(root, { opacity: 0, duration: 0.3, onComplete: unlock })
         return
       }
 
@@ -126,25 +126,25 @@ export default function Preloader({ onReveal, onComplete }) {
 
       exit = gsap.timeline({ onComplete: unlock })
       exit
-        .to(counter, { value: 100, duration: 0.5, ease: 'power1.out' })
-        .to('.pl-line', { yPercent: -110, duration: 0.6, ease: 'power3.in', stagger: 0.05 }, '+=0.45')
-        .to('.pl-ring, .pl-stamens, .pl-stamens-base', { opacity: 0, duration: 0.4 }, '<')
+        .to(counter, { value: 100, duration: 0.3, ease: 'power2.out' })
+        .to('.pl-line', { yPercent: -105, duration: 0.4, ease: 'power3.inOut', stagger: 0.03 }, '+=0.12')
+        .to('.pl-ring, .pl-stamens, .pl-stamens-base', { opacity: 0, duration: 0.3, ease: 'power2.out' }, '<')
         .to(
           flies,
           {
             x: (i) => dx[i], y: (i) => dy[i], rotation: (i) => rot[i],
-            scale: 1.15, opacity: 0, duration: 1.4, ease: 'power2.in', stagger: 0.06,
+            scale: 1.15, opacity: 0, duration: 0.85, ease: 'power2.in', stagger: 0.035,
           },
-          '<0.1'
+          '<0.05'
         )
-        .add(() => onReveal?.(), '-=0.9')
-        .to('.pl-slat', { yPercent: -100, duration: 1, ease: 'power4.inOut', stagger: 0.07 }, '<')
+        .add(() => onReveal?.(), '-=0.55')
+        .to('.pl-slat', { yPercent: -100, duration: 0.75, ease: 'power3.inOut', stagger: 0.035 }, '<')
     }
 
     if (reduced) {
       ready.then(finish)
     } else {
-      climb = gsap.to(counter, { value: 90, duration: MIN_SECONDS, ease: 'power2.out' })
+      climb = gsap.to(counter, { value: 90, duration: MIN_SECONDS, ease: 'power1.inOut' })
       Promise.all([ready, climb.then()]).then(finish)
     }
 

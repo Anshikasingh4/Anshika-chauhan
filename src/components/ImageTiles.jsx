@@ -40,7 +40,7 @@ export default function ImageTiles() {
     >
       {site.tiles.map((t, i) => (
         <div key={t.src} className="tile flex-shrink-0">
-          <div className={`tile-wrapper group relative overflow-hidden transition-transform duration-700 ease-out hover:rotate-[1.5deg] ${shapes[i]}`}>
+          <div className={`tile-wrapper group relative overflow-hidden transition-transform duration-700 ease-out ${shapes[i]}`}>
             <div className="tile-img absolute -inset-y-[8%] inset-x-0">
               <SafeImage
                 src={t.src}
