@@ -1,0 +1,125 @@
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Outfit:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --page: #F6EDED;
+  --sakura: #F8DDE3;
+  --blush: #EFC2D0;
+  --ink: #111111;
+  --muted: #565052;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: 'Outfit', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings font: Clash Display Medium */
+h1, h2, h3, h4, h5, h6,
+.heading-display,
+.font-heading,
+.font-display {
+  font-family: 'Clash Display', system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* Subheadings font: Fredoka */
+.subheading,
+.font-subheading {
+  font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
+}
+
+/* Navigation font: Fredoka */
+nav,
+.nav-link,
+.font-nav {
+  font-family: 'Fredoka', system-ui, -apple-system, sans-serif;
+}
+
+section[id], footer[id] { scroll-margin-top: 4rem; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::selection { background: var(--blush); }
+
+.hero-bg {
+  background:
+    radial-gradient(60% 55% at 78% 22%, #FBE3E8 0%, rgba(251, 227, 232, 0) 70%),
+    radial-gradient(50% 50% at 30% 70%, #F7CFDA 0%, rgba(247, 207, 218, 0) 70%),
+    linear-gradient(180deg, #F9E4E9 0%, #F7DDE4 55%, #F6E6E8 100%);
+}
+
+.link-underline { position: relative; }
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.2, 1);
+}
+.link-underline:hover::after,
+.link-underline[aria-current='true']::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* On-hover text reveal animation */
+.text-roll {
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 1.3em;
+  line-height: 1.3em;
+  vertical-align: middle;
+}
+
+.text-roll-inner {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.text-roll-item {
+  display: inline-block;
+  height: 1.3em;
+  line-height: 1.3em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.text-roll:hover .text-roll-inner,
+a:hover .text-roll .text-roll-inner,
+button:hover .text-roll .text-roll-inner,
+.group:hover .text-roll .text-roll-inner {
+  transform: translateY(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-roll-inner {
+    transition: none !important;
+  }
+}
+
