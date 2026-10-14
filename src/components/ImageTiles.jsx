@@ -4,11 +4,11 @@ import { site } from '../data/site'
 import useReducedMotion from '../hooks/useReducedMotion'
 import SafeImage from './SafeImage'
 
-// Different silhouettes and aspect ratios, as in the reference.
+// Responsive silhouettes and aspect ratios tailored for both mobile and desktop screens
 const shapes = [
-  'h-[clamp(190px,24vw,350px)] w-[clamp(120px,15vw,215px)] rounded-[999px_999px_70px_70px/80px_80px_70px_70px] md:rounded-[60px]',
-  'h-[clamp(150px,19vw,270px)] w-[clamp(150px,19vw,270px)] rounded-[48%_52%_50%_50%/55%_48%_52%_45%]',
-  'h-[clamp(190px,24vw,350px)] w-[clamp(120px,15vw,215px)] rounded-[60px]',
+  'w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] rounded-[999px_999px_35px_35px/50px_50px_35px_35px] sm:rounded-[999px_999px_70px_70px/80px_80px_70px_70px] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)] md:rounded-[60px]',
+  'w-[clamp(88px,30vw,220px)] h-[clamp(88px,30vw,220px)] rounded-[48%_52%_50%_50%/55%_48%_52%_45%] md:w-[clamp(170px,19vw,270px)] md:h-[clamp(170px,19vw,270px)]',
+  'w-[clamp(76px,25vw,170px)] h-[clamp(125px,38vw,270px)] rounded-[26px] sm:rounded-[45px] md:w-[clamp(140px,15vw,215px)] md:h-[clamp(220px,24vw,350px)] md:rounded-[60px]',
 ]
 
 export default function ImageTiles() {
@@ -33,9 +33,13 @@ export default function ImageTiles() {
   }, [reduced])
 
   return (
-    <section ref={ref} aria-label="Moodboard" className="flex items-center justify-center gap-4 px-5 py-20 md:gap-10 md:py-28">
+    <section
+      ref={ref}
+      aria-label="Moodboard"
+      className="flex w-full max-w-full items-center justify-center gap-2 px-2.5 py-12 sm:gap-4 sm:px-6 md:gap-10 md:py-28 overflow-hidden"
+    >
       {site.tiles.map((t, i) => (
-        <div key={t.src} className="tile">
+        <div key={t.src} className="tile flex-shrink-0">
           <div className={`group relative overflow-hidden transition-transform duration-700 ease-out hover:rotate-[1.5deg] ${shapes[i]}`}>
             <div className="tile-img absolute -inset-y-[8%] inset-x-0">
               <SafeImage
